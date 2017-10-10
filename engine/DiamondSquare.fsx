@@ -1,10 +1,15 @@
 ﻿module DiamondSquare =
 
-    //create type for defining shapes
+    //create types for defining shapes
+
+    ///Square, defined by its side length
+    type Square = Square of int
+    ///Diamond, defined by length between to corners
+    type Diamond = Diamond of int
     ///Defined by length of the side of a square that the ovject is inscribed in
     type Shape =
-        | Square of int
-        | Diamond of int
+        | Square of Square
+        | Diamond of Diamond
     
     ///the X and Y position
     type Coordinates = {X: int; Y: int}
@@ -26,15 +31,14 @@
     
     //locate corners of a shape that is inscribed in a square
     ///Returns list of corner values for a given shape. Takes a matrix and returns a list of Coordinates
-    let corners (shape:Shape) (matrixLocal:HieghtMap) =
+    let getCorners (shape:Shape) (matrixLocal:HieghtMap) =
         let farSide = Array2D.length1 matrixLocal - 1
         let getSquareCorners = 
             {X = 0; Y = 0}::{X = farSide; Y = 0}::{X = 0; Y = farSide}::{X = farSide; Y = farSide}::[]
         let getDiamondCorners =
             {X = farSide / 2; Y = 0}::{X = farSide; Y = farSide / 2}::{X = farSide / 2; Y = farSide}::{X = 0; Y = farSide / 2}::[]
         match shape with
-        | :? Square -> getSquareCorners
-        | :? Diamond -> getDiamondCorners
-        | _ -> None
+        | Square x -> getSquareCorners
+        | Diamond x -> getDiamondCorners
 
          
