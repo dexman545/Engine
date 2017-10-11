@@ -52,3 +52,13 @@
             | [] -> acc
             | x::xs -> loop ((getHieght x)::acc) xs
         loop [] corners
+
+    //diamond step - takes a square and offsets the centerpoint
+    //Takes a matrix and offsets the centerpoint of the square
+    let diamondStep (matrixLocal:HieghtMap) = 
+        let rand = 3.0
+        let center = locateCenterpoint matrixLocal
+        let hieghts = getHieghts <| getCorners "Square" <| matrixLocal
+        let offset = rand + (List.average hieghts)
+        matrixLocal.[center.X, center.Y] <- offset
+
