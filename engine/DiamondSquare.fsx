@@ -31,14 +31,12 @@
     
     //locate corners of a shape that is inscribed in a square
     ///Returns list of corner values for a given shape. Takes a matrix and returns a list of Coordinates
-    let getCorners (shape:Shape) (matrixLocal:HieghtMap) =
+    let getCorners (shape:string) (matrixLocal:HieghtMap) =
         let farSide = Array2D.length1 matrixLocal - 1
         let getSquareCorners = 
             {X = 0; Y = 0}::{X = farSide; Y = 0}::{X = 0; Y = farSide}::{X = farSide; Y = farSide}::[]
         let getDiamondCorners =
             {X = farSide / 2; Y = 0}::{X = farSide; Y = farSide / 2}::{X = farSide / 2; Y = farSide}::{X = 0; Y = farSide / 2}::[]
         match shape with
-        | Square x -> getSquareCorners
-        | Diamond x -> getDiamondCorners
-
-         
+        | "Square" -> getSquareCorners
+        | "Diamond" -> getDiamondCorners
