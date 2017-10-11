@@ -48,7 +48,7 @@
             let x = c.X
             let y = c.Y
             matrixLocal.[x,y]
-        let rec loop acc blah = function
+        let rec loop acc = function
             | [] -> acc
             | x::xs -> loop ((getHieght x)::acc) xs
         loop [] corners
