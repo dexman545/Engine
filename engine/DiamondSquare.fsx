@@ -39,4 +39,16 @@
             {X = farSide / 2; Y = 0}::{X = farSide; Y = farSide / 2}::{X = farSide / 2; Y = farSide}::{X = 0; Y = farSide / 2}::[]
         match shape with
         | "Square" -> getSquareCorners
-        | "Diamond" -> getDiamondCorners
+        | _ -> getDiamondCorners
+    
+    //pulls hieghts for a given list of coordinates
+    ///gets hieghts of a given list of coordinates and a matrix and returns a list of the values
+    let getHieghts (corners:Coordinates list) (matrixLocal:HieghtMap) = 
+        let getHieght (c:Coordinates) =
+            let x = c.X
+            let y = c.Y
+            matrixLocal.[x,y]
+        let rec loop acc blah = function
+            | [] -> acc
+            | x::xs -> loop ((getHieght x)::acc) xs
+        loop [] corners
