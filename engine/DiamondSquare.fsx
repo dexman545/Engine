@@ -43,7 +43,7 @@
     
     //pulls hieghts for a given list of coordinates
     ///gets hieghts of a given list of coordinates and a matrix and returns a list of the values
-    let getHieghts (corners:Coordinates list) (matrixLocal:HieghtMap) = 
+    let getHieghts (matrixLocal:HieghtMap) (corners:Coordinates list) = 
         let getHieght (c:Coordinates) =
             let x = c.X
             let y = c.Y
@@ -56,10 +56,10 @@
     //diamond step - takes a square and offsets the centerpoint
     //Takes a matrix and offsets the centerpoint of the square
     let diamondStep (matrixLocal:HieghtMap) = 
-        let rand = 
+        let rand = 3.0
         let center = locateCenterpoint matrixLocal
-        let hieghts = getHieghts <| getCorners "Square" <| matrixLocal
+        let hieghts = getHieghts matrixLocal <| getCorners "Square" <| matrixLocal
+        //let corners = getCorners "Square" matrixLocal
+        //let hieghts = getHieghts corners matrixLocal
         let offset = rand + (List.average hieghts)
         matrixLocal.[center.X, center.Y] <- offset
-
-    
