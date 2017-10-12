@@ -58,8 +58,6 @@
     let diamondStep (matrixLocal:HieghtMap) = 
         let rand = 3.0
         let center = locateCenterpoint matrixLocal
-        let hieghts = getHieghts matrixLocal <| getCorners "Square" <| matrixLocal
-        //let corners = getCorners "Square" matrixLocal
-        //let hieghts = getHieghts corners matrixLocal
+        let hieghts = matrixLocal |> getCorners "Square" |> getHieghts matrixLocal
         let offset = rand + (List.average hieghts)
         matrixLocal.[center.X, center.Y] <- offset
