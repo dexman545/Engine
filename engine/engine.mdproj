@@ -10,8 +10,8 @@
     <OutputPath>.\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="test.fs" />
+    <None Include="RandomNum.fs" />
     <None Include="test.fsx" />
-    <None Include="DiamondSquare.fsx" />
+    <None Include="DiamondSquare.fs" />
   </ItemGroup>
 </Project>
